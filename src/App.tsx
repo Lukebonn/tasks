@@ -5,13 +5,21 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 function App(): JSX.Element {
     return (
         <div className="App" style={{ border: "#880808", padding: "4px" }}>
-            <header className="App-header">
+            <header
+                className="App-header"
+                style={{
+                    backgroundColor: "#FF5733",
+                    border: "#880808",
+                    padding: "4px"
+                }}
+            >
                 UD CISC275 with Hello World by Luke Bonniwell
             </header>
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload.
             </p>
+            <h1>HOLLOW WORLD</h1>
             <ol>
                 <li>Hi</li>
                 <li>Hello</li>
@@ -21,7 +29,9 @@ function App(): JSX.Element {
                 src="https://img.freepik.com/free-photo/puppy-that-is-walking-snow_1340-37228.jpg"
                 alt="A picture of my dog Jelly Meatloaf"
             />
-            <Button onClick={() => console.log("I am logged")}>Click Me</Button>
+            <Button onClick={() => console.log("Hello World!")}>
+                Log Hello World
+            </Button>
             <Container>
                 <Row>
                     <Col>First column.</Col>
