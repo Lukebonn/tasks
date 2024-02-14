@@ -12,6 +12,11 @@ function App(): JSX.Element {
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload.
             </p>
+            <ol>
+                <li>Hi</li>
+                <li>Hello</li>
+                <li>Goodbye</li>
+            </ol>
             <img
                 src="https://img.freepik.com/free-photo/puppy-that-is-walking-snow_1340-37228.jpg"
                 alt="A picture of my dog Jelly Meatloaf"
