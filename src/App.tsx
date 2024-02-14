@@ -4,10 +4,7 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 
 function App(): JSX.Element {
     return (
-        <div
-            className="App"
-            style={{ border: "1px solid blue", padding: "4px" }}
-        >
+        <div className="App" style={{ border: "#880808", padding: "4px" }}>
             <header className="App-header">
                 UD CISC275 with Hello World by Luke Bonniwell
             </header>
