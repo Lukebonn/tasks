@@ -4,7 +4,7 @@
  *      C = (F - 32) * 5/9
  */
 export function fahrenheitToCelius(temperature: number): number {
-    return 0;
+    return (temperature - 32) * (5 / 9);
 }
 
 /**
@@ -12,7 +12,22 @@ export function fahrenheitToCelius(temperature: number): number {
  * if the number is greater than zero.
  */
 export function add3(first: number, second: number, third: number): number {
-    return 0;
+    if (first !== 0) {
+        var one = first;
+    } else {
+        var one = 0;
+    }
+    if (first !== 0) {
+        var two = second;
+    } else {
+        var two = 0;
+    }
+    if (first !== 0) {
+        var three = third;
+    } else {
+        var three = 0;
+    }
+    return one + two + three;
 }
 
 /**
