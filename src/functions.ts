@@ -17,12 +17,12 @@ export function add3(first: number, second: number, third: number): number {
     } else {
         var one = 0;
     }
-    if (first > 0) {
+    if (second > 0) {
         var two = second;
     } else {
         var two = 0;
     }
-    if (first > 0) {
+    if (third > 0) {
         var three = third;
     } else {
         var three = 0;
