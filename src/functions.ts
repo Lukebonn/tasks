@@ -55,10 +55,10 @@ export function isQuestion(message: string): boolean {
 export function convertYesNo(word: string): boolean | null {
     // eslint-disable-next-line prefer-const
     let trueWord: string = word.toUpperCase();
-    if (trueWord === "yes") {
+    if (trueWord === "YES") {
         return true;
     }
-    if (trueWord === "no") {
+    if (trueWord === "NO") {
         return false;
     } else {
         return null;
