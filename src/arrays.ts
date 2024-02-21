@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /**
  * Consume an array of numbers, and return a new array containing
  * JUST the first and last number. If there are no elements, return
@@ -56,6 +57,7 @@ export const removeDollars = (amounts: string[]): number[] => {
 export const shoutIfExclaiming = (messages: string[]): string[] => {
     return messages
         .map((message: string): string =>
+            // eslint-disable-next-line prettier/prettier
             message.endsWith("!")
                 ? message.toUpperCase()
                 : message.endsWith("?")
