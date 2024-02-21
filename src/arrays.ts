@@ -14,8 +14,8 @@ export function bookEndList(numbers: number[]): number[] {
     } else {
         newNums.splice(0, 0, numbers[1]);
         newNums.splice(0, 0, numbers[numbers.length - 1]);
+        return newNums;
     }
-    return numbers;
 }
 
 /**
