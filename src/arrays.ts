@@ -6,13 +6,12 @@
  */
 export function bookEndList(numbers: number[]): number[] {
     const length = numbers.length;
-    if (numbers.length === 0) {
+    if (length === 0) {
         return [];
-    }
-    if (numbers.length === 1) {
+    } else if (numbers.length === 1) {
         return [numbers[0], numbers[0]];
     } else {
-        return [0, 0, numbers[1], numbers[numbers.length - 1]];
+        return [numbers[0], numbers[length - 1]];
     }
 }
 
