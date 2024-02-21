@@ -56,6 +56,7 @@ export const removeDollars = (amounts: string[]): number[] => {
 export const shoutIfExclaiming = (messages: string[]): string[] => {
     return messages
         .map((message: string): string =>
+            // eslint-disable-next-line prettier/prettier
             message.endsWith("!")
                 ? message.toUpperCase()
                 : message.endsWith("?")
