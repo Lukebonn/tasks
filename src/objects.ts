@@ -30,7 +30,9 @@ export function makeBlankQuestion(
  * HINT: Look up the `trim` and `toLowerCase` functions.
  */
 export function isCorrect(question: Question, answer: string): boolean {
-    return false;
+    return (
+        question.expected.trim().toLowerCase() === answer.trim().toLowerCase()
+    );
 }
 
 /**
@@ -40,7 +42,24 @@ export function isCorrect(question: Question, answer: string): boolean {
  * be exactly one of the options.
  */
 export function isValid(question: Question, answer: string): boolean {
-    return false;
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+    let valid1: boolean = false;
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+    let multi: boolean = true;
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+    let i: number = 0;
+    if (question.type === "multiple_choice_question") {
+        while (multi) {
+            valid1 = question.options[i] === answer;
+            i++;
+            if (valid1 === true || i === question.options.length) {
+                multi = false;
+            }
+        }
+    } else {
+        valid1 = true;
+    }
+    return valid1;
 }
 
 /**
@@ -50,7 +69,11 @@ export function isValid(question: Question, answer: string): boolean {
  * name "My First Question" would become "9: My First Q".
  */
 export function toShortForm(question: Question): string {
-    return "";
+    return (
+        question.id +
+        ": " +
+        question.name.substring(0, 10 || question.name.length) //I just want the person reading this code to know that I learned this from chatgpt, but I implemented it myself and you should be very proud of this bc it's fucking awesome.
+    );
 }
 
 /**
