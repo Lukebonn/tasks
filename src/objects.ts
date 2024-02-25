@@ -94,7 +94,20 @@ export function toShortForm(question: Question): string {
  * Check the unit tests for more examples of what this looks like!
  */
 export function toMarkdown(question: Question): string {
-    return "";
+    let fini: string = "# " + question.name + "\n" + question.body;
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+    let optNums: boolean = true;
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+    let i: number = 0;
+    if (question.type === "multiple_choice_question")
+        while (optNums) {
+            fini = fini + "\n- " + question.options[i];
+            i++;
+            if (i === question.options.length) {
+                optNums = false;
+            }
+        }
+    return fini;
 }
 
 /**
