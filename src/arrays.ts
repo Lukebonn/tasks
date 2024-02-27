@@ -112,22 +112,59 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    let sum = 0;
-    let foundNegative = false;
+    //splice pricesInside.splice(2, 0, 499) (index, deletions, number)
+    // `findIndex` gives you the index of the element matching a condition
+    // const firstLowPriceIndex = prices.findIndex(
+    //     (price: number): boolean => price < 10
+    // );
+    // eslint-disable-next-line prefer-const
+    let firstNeg: number = values.findIndex((num: number): boolean => num < 0);
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+    let i: number = 0;
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+    let check: boolean = true;
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+    let sum: number = 0;
+    if (firstNeg >= 0) {
+        while (check) {
+            sum += values[i];
+            i++;
 
-    return values
-        .map((value: number): number => {
-            if (foundNegative) {
-                sum += value;
-                return value;
+            if (i === firstNeg || i === values.length) {
+                check = false;
             }
+        }
+    } else {
+        // If no negative number is found, sum all elements
+        sum = values.reduce((acc, curr) => acc + curr, 0);
+    }
+    // eslint-disable-next-line prefer-const
+    let newValues: number[] = values.slice();
+    if (firstNeg >= 0) {
+        newValues.splice(firstNeg >= 0 ? firstNeg : values.length, 1, sum);
+    } else {
+        newValues.push(sum);
+    }
+    return newValues;
 
-            if (value < 0) {
-                foundNegative = true;
-                return value;
-            }
-
-            return value;
-        })
-        .concat(foundNegative ? [sum] : []);
+    // let sum = 0;
+    // let foundNegative = false;
+    // const result = values.map((value: number): number => {
+    //     if (foundNegative) {
+    //         sum += value;
+    //         return value;
+    //     }
+    //     if (value < 0) {
+    //         foundNegative = true;
+    //         return value;
+    //     }
+    //     return value;
+    // });
+    // // Check if the last element is positive and add it to the result without including in sum
+    // if (!foundNegative && values.length > 0 && values[values.length - 1] >= 0) {
+    //     result.push(values[values.length - 1]);
+    // } else if (foundNegative) {
+    //     result.push(sum);
+    // }
+    // return result;
 }
