@@ -125,6 +125,13 @@ export function renameQuestion(question: Question, newName: string): Question {
  * published; if it was published, now it should be not published.
  */
 export function publishQuestion(question: Question): Question {
+    if (question.published) {
+        question.published = false;
+    } else {
+        question.published = true;
+    }
+    // let newPublished: boolean = question.published ? false : true;
+    // question.published = newPublished;
     return question;
 }
 
