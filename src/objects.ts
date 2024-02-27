@@ -180,5 +180,15 @@ export function mergeQuestion(
     contentQuestion: Question,
     { points }: { points: number }
 ): Question {
-    return contentQuestion;
+    const newQuestion = {
+        id: id,
+        name: name,
+        body: contentQuestion.body,
+        type: contentQuestion.type,
+        options: contentQuestion.options,
+        points: points,
+        published: false,
+        expected: contentQuestion.expected
+    };
+    return newQuestion;
 }
