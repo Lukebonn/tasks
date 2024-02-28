@@ -130,7 +130,7 @@ export function injectPositive(values: number[]): number[] {
             sum += values[i];
             i++;
 
-            if (i === firstNeg || i === values.length) {
+            if (i === firstNeg || values.length) {
                 check = false;
             }
         }
@@ -139,9 +139,9 @@ export function injectPositive(values: number[]): number[] {
         sum = values.reduce((acc, curr) => acc + curr, 0);
     }
     // eslint-disable-next-line prefer-const
-    let newValues: number[] = values.slice();
+    let newValues: number[] = [...values];
     if (firstNeg >= 0) {
-        newValues.splice(firstNeg >= 0 ? firstNeg : values.length, 1, sum);
+        newValues.splice(firstNeg + 1, 0, sum);
     } else {
         newValues.push(sum);
     }
