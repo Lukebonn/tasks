@@ -18,7 +18,25 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
  * `expected`, and an empty array for its `options`.
  */
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
-    return [];
+    let i: number = 0;
+    let check: boolean = true;
+    let newQuestions: Question[] = [];
+    while (check) {
+        if (
+            questions[i].body === "" &&
+            questions[i].expected === "" &&
+            questions[i].options.length === 0
+        ) {
+            i++;
+        } else {
+            newQuestions.push(questions[i]);
+            i++;
+        }
+        if (i === questions.length) {
+            check = false;
+        }
+    }
+    return newQuestions;
 }
 
 /***
