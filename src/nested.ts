@@ -215,7 +215,19 @@ export function makeAnswers(questions: Question[]): Answer[] {
  * each question is now published, regardless of its previous published status.
  */
 export function publishAll(questions: Question[]): Question[] {
-    return [];
+    let i: number = 0;
+    let check: boolean = true;
+    let newQuestions: Question[] = [];
+    while (check) {
+        let newQuestion: Question = { ...questions[i] };
+        newQuestion.published = true;
+        newQuestions.push(newQuestion);
+        i++;
+        if (i === questions.length) {
+            check = false;
+        }
+    }
+    return newQuestions;
 }
 
 /***
