@@ -71,7 +71,21 @@ export function findQuestion(
  * with the given `id`.
  */
 export function removeQuestion(questions: Question[], id: number): Question[] {
-    return [];
+    let i: number = 0;
+    let check: boolean = true;
+    let newQuestions: Question[] = [];
+    while (check) {
+        if (questions[i].id === id) {
+            i++;
+        } else {
+            newQuestions.push(questions[i]);
+            i++;
+        }
+        if (i === questions.length) {
+            check = false;
+        }
+    }
+    return newQuestions;
 }
 
 /***
@@ -79,21 +93,53 @@ export function removeQuestion(questions: Question[], id: number): Question[] {
  * questions, as an array.
  */
 export function getNames(questions: Question[]): string[] {
-    return [];
+    let i: number = 0;
+    let check: boolean = true;
+    let names: string[] = [];
+    while (check) {
+        names.push(questions[i].name);
+        i++;
+        if (i === questions.length) {
+            check = false;
+        }
+    }
+    return names;
 }
 
 /***
  * Consumes an array of questions and returns the sum total of all their points added together.
  */
 export function sumPoints(questions: Question[]): number {
-    return 0;
+    let i: number = 0;
+    let check: boolean = true;
+    let sumPoints: number = 0;
+    while (check) {
+        sumPoints += questions[i].points;
+        i++;
+        if (i === questions.length) {
+            check = false;
+        }
+    }
+    return sumPoints;
 }
 
 /***
  * Consumes an array of questions and returns the sum total of the PUBLISHED questions.
  */
 export function sumPublishedPoints(questions: Question[]): number {
-    return 0;
+    let i: number = 0;
+    let check: boolean = true;
+    let sumPoints: number = 0;
+    while (check) {
+        if (questions[i].published) {
+            sumPoints += questions[i].points;
+        }
+        i++;
+        if (i === questions.length) {
+            check = false;
+        }
+    }
+    return sumPoints;
 }
 
 /***
@@ -114,7 +160,29 @@ id,name,options,points,published
  * Check the unit tests for more examples!
  */
 export function toCSV(questions: Question[]): string {
-    return "";
+    let i: number = 0;
+    let check: boolean = true;
+    let fini: string = "id,name,options,points,published" + "\n";
+    while (check) {
+        fini =
+            fini +
+            questions[i].id +
+            "," +
+            questions[i].name +
+            "," +
+            questions[i].options.length +
+            "," +
+            questions[i].points.toString() +
+            "," +
+            questions[i].published;
+        i++;
+        if (i === questions.length) {
+            check = false;
+        } else {
+            fini = fini + "\n";
+        }
+    }
+    return fini;
 }
 
 /**
@@ -123,7 +191,23 @@ export function toCSV(questions: Question[]): string {
  * making the `text` an empty string, and using false for both `submitted` and `correct`.
  */
 export function makeAnswers(questions: Question[]): Answer[] {
-    return [];
+    let i: number = 0;
+    let check: boolean = true;
+    let answers: Answer[] = [];
+    while (check) {
+        const newAnswer: Answer = {
+            questionId: questions[i].id,
+            text: "",
+            submitted: false,
+            correct: false
+        };
+        answers.push(newAnswer);
+        i++;
+        if (i === questions.length) {
+            check = false;
+        }
+    }
+    return answers;
 }
 
 /***
