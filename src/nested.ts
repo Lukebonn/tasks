@@ -265,7 +265,27 @@ export function addNewQuestion(
     name: string,
     type: QuestionType
 ): Question[] {
-    return [];
+    const newQuestion = {
+        id: id,
+        name: name,
+        type: type,
+        body: "",
+        expected: "",
+        options: [],
+        points: 1,
+        published: false
+    };
+    if (questions.length === 0) {
+        let newQuestions: Question[] = [];
+        newQuestions.push(newQuestion);
+        return newQuestions;
+    }
+    // eslint-disable-next-line prefer-const
+    let newQuestions: Question[] = questions.map(
+        (question: Question): Question => ({ ...question })
+    );
+    newQuestions.push(newQuestion);
+    return newQuestions;
 }
 
 /***
