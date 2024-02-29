@@ -215,19 +215,20 @@ export function makeAnswers(questions: Question[]): Answer[] {
  * each question is now published, regardless of its previous published status.
  */
 export function publishAll(questions: Question[]): Question[] {
-    let i: number = 0;
-    let check: boolean = true;
-    let newQuestions: Question[] = [];
-    while (check) {
-        let newQuestion: Question = { ...questions[i] };
-        newQuestion.published = true;
-        newQuestions.push(newQuestion);
-        i++;
-        if (i === questions.length) {
-            check = false;
-        }
-    }
-    return newQuestions;
+    return questions.map((question) => ({ ...question, published: true }));
+    // let i: number = 0;
+    // let check: boolean = true;
+    // let newQuestions: Question[] = [];
+    // while (check) {
+    //     let newQuestion: Question = { ...questions[i] };
+    //     newQuestion.published = true;
+    //     newQuestions.push(newQuestion);
+    //     i++;
+    //     if (i === questions.length) {
+    //         check = false;
+    //     }
+    // }
+    // return newQuestions;
 }
 
 /***
@@ -235,7 +236,22 @@ export function publishAll(questions: Question[]): Question[] {
  * are the same type. They can be any type, as long as they are all the SAME type.
  */
 export function sameType(questions: Question[]): boolean {
-    return false;
+    if (questions.length === 0) {
+        return true;
+    }
+    let i: number = 0;
+    let check: boolean = true;
+    const theType: QuestionType = questions[i].type;
+    while (check) {
+        if (questions[i].type !== theType) {
+            return false;
+        }
+        i++;
+        if (i === questions.length) {
+            check = false;
+        }
+    }
+    return true;
 }
 
 /***
