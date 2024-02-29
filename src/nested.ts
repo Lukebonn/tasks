@@ -47,6 +47,22 @@ export function findQuestion(
     questions: Question[],
     id: number
 ): Question | null {
+    if (questions.length === 0) {
+        return null;
+    }
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+    let i: number = 0;
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+    let check: boolean = true;
+    while (check) {
+        if (questions[i].id === id) {
+            return questions[i];
+        }
+        i++;
+        if (i === questions.length) {
+            check = false;
+        }
+    }
     return null;
 }
 
