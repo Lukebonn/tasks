@@ -298,7 +298,21 @@ export function renameQuestionById(
     targetId: number,
     newName: string
 ): Question[] {
-    return [];
+    const newQuestions: Question[] = questions.map(
+        (question: Question): Question => ({ ...question })
+    );
+    let i: number = 0;
+    let check: boolean = true;
+    while (check) {
+        if (newQuestions[i].id === targetId) {
+            newQuestions[i].name = newName;
+        }
+        i++;
+        if (i === newQuestions.length) {
+            check = false;
+        }
+    }
+    return newQuestions;
 }
 
 /***
@@ -313,7 +327,24 @@ export function changeQuestionTypeById(
     targetId: number,
     newQuestionType: QuestionType
 ): Question[] {
-    return [];
+    const newQuestions: Question[] = questions.map(
+        (question: Question): Question => ({ ...question })
+    );
+    let i: number = 0;
+    let check: boolean = true;
+    while (check) {
+        if (newQuestions[i].id === targetId) {
+            newQuestions[i].type = newQuestionType;
+            if (newQuestionType !== "multiple_choice_question") {
+                newQuestions[i].options = [];
+            }
+        }
+        i++;
+        if (i === newQuestions.length) {
+            check = false;
+        }
+    }
+    return newQuestions;
 }
 
 /**
@@ -332,7 +363,31 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string
 ): Question[] {
-    return [];
+    const newQuestions: Question[] = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            options: [...question.options]
+        })
+    );
+    let i: number = 0;
+    while (i < newQuestions.length) {
+        if (newQuestions[i].id === targetId) {
+            const updatedQuestion: Question = {
+                ...newQuestions[i],
+                options: [...newQuestions[i].options]
+            };
+            if (targetOptionIndex === -1) {
+                updatedQuestion.options =
+                    updatedQuestion.options.concat(newOption);
+            } else {
+                updatedQuestion.options.splice(targetOptionIndex, 1, newOption);
+            }
+            newQuestions[i] = updatedQuestion;
+            break;
+        }
+        i++;
+    }
+    return newQuestions;
 }
 
 /***
@@ -346,5 +401,26 @@ export function duplicateQuestionInArray(
     targetId: number,
     newId: number
 ): Question[] {
-    return [];
+    const newQuestions: Question[] = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            options: [...question.options]
+        })
+    );
+    let i: number = 0;
+    while (i < newQuestions.length) {
+        if (newQuestions[i].id === targetId) {
+            const newQuestion = {
+                ...newQuestions[i],
+                name: "Copy of " + newQuestions[i].name,
+                published: false,
+                id: newId,
+                options: [...newQuestions[i].options]
+            };
+            newQuestions.splice(i + 1, 0, newQuestion);
+            i++;
+        }
+        i++;
+    }
+    return newQuestions;
 }
