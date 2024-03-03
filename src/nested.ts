@@ -18,9 +18,9 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
  * `expected`, and an empty array for its `options`.
  */
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
-    let i: number = 0;
-    let check: boolean = true;
-    let newQuestions: Question[] = [];
+    let i = 0;
+    let check = true;
+    const newQuestions: Question[] = [];
     while (check) {
         if (
             questions[i].body === "" &&
@@ -71,9 +71,9 @@ export function findQuestion(
  * with the given `id`.
  */
 export function removeQuestion(questions: Question[], id: number): Question[] {
-    let i: number = 0;
-    let check: boolean = true;
-    let newQuestions: Question[] = [];
+    let i = 0;
+    let check = true;
+    const newQuestions: Question[] = [];
     while (check) {
         if (questions[i].id === id) {
             i++;
@@ -93,9 +93,9 @@ export function removeQuestion(questions: Question[], id: number): Question[] {
  * questions, as an array.
  */
 export function getNames(questions: Question[]): string[] {
-    let i: number = 0;
-    let check: boolean = true;
-    let names: string[] = [];
+    let i = 0;
+    let check = true;
+    const names: string[] = [];
     while (check) {
         names.push(questions[i].name);
         i++;
@@ -110,8 +110,11 @@ export function getNames(questions: Question[]): string[] {
  * Consumes an array of questions and returns the sum total of all their points added together.
  */
 export function sumPoints(questions: Question[]): number {
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     let i: number = 0;
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     let check: boolean = true;
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     let sumPoints: number = 0;
     while (check) {
         sumPoints += questions[i].points;
@@ -127,8 +130,11 @@ export function sumPoints(questions: Question[]): number {
  * Consumes an array of questions and returns the sum total of the PUBLISHED questions.
  */
 export function sumPublishedPoints(questions: Question[]): number {
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     let i: number = 0;
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     let check: boolean = true;
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     let sumPoints: number = 0;
     while (check) {
         if (questions[i].published) {
@@ -160,7 +166,9 @@ id,name,options,points,published
  * Check the unit tests for more examples!
  */
 export function toCSV(questions: Question[]): string {
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     let i: number = 0;
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     let check: boolean = true;
     let fini: string = "id,name,options,points,published" + "\n";
     while (check) {
@@ -191,8 +199,11 @@ export function toCSV(questions: Question[]): string {
  * making the `text` an empty string, and using false for both `submitted` and `correct`.
  */
 export function makeAnswers(questions: Question[]): Answer[] {
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     let i: number = 0;
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     let check: boolean = true;
+    // eslint-disable-next-line prefer-const
     let answers: Answer[] = [];
     while (check) {
         const newAnswer: Answer = {
@@ -239,7 +250,9 @@ export function sameType(questions: Question[]): boolean {
     if (questions.length === 0) {
         return true;
     }
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     let i: number = 0;
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     let check: boolean = true;
     const theType: QuestionType = questions[i].type;
     while (check) {
@@ -276,6 +289,7 @@ export function addNewQuestion(
         published: false
     };
     if (questions.length === 0) {
+        // eslint-disable-next-line prefer-const
         let newQuestions: Question[] = [];
         newQuestions.push(newQuestion);
         return newQuestions;
@@ -301,7 +315,9 @@ export function renameQuestionById(
     const newQuestions: Question[] = questions.map(
         (question: Question): Question => ({ ...question })
     );
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     let i: number = 0;
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     let check: boolean = true;
     while (check) {
         if (newQuestions[i].id === targetId) {
@@ -330,7 +346,9 @@ export function changeQuestionTypeById(
     const newQuestions: Question[] = questions.map(
         (question: Question): Question => ({ ...question })
     );
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     let i: number = 0;
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     let check: boolean = true;
     while (check) {
         if (newQuestions[i].id === targetId) {
@@ -369,6 +387,7 @@ export function editOption(
             options: [...question.options]
         })
     );
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     let i: number = 0;
     while (i < newQuestions.length) {
         if (newQuestions[i].id === targetId) {
@@ -407,6 +426,7 @@ export function duplicateQuestionInArray(
             options: [...question.options]
         })
     );
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     let i: number = 0;
     while (i < newQuestions.length) {
         if (newQuestions[i].id === targetId) {
