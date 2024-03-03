@@ -11,109 +11,22 @@ Browserslist: caniuse-lite is outdated. Please run:
 Browserslist: caniuse-lite is outdated. Please run:
   npx browserslist@latest --update-db
   Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
-FAIL src/objects.test.ts
-  ● Testing the object functions › Testing the publishQuestion function
-
-    expect(received).toEqual(expected) // deep equality
-
-    - Expected  - 1
-    + Received  + 1
-
-      Object {
-        "body": "What is 2+2?",
-        "expected": "4",
-        "id": 1,
-    -   "name": "Addition",
-    +   "name": "My Addition Question",
-        "options": Array [],
-        "points": 1,
-        "published": false,
-        "type": "short_answer_question",
-      }
-
-      172 |     // publishQuestion
-      173 |     test("Testing the publishQuestion function", () => {
-    > 174 |         expect(publishQuestion(ADDITION_QUESTION)).toEqual({
-          |                                                    ^
-      175 |             id: 1,
-      176 |             name: "Addition",
-      177 |             body: "What is 2+2?",
-
-      at Object.<anonymous> (src/objects.test.ts:174:52)
-
-  ● Testing the object functions › Testing the duplicateQuestion function
-
-    expect(received).toEqual(expected) // deep equality
-
-    - Expected  - 1
-    + Received  + 1
-
-      Object {
-        "body": "What is 2+2?",
-        "expected": "4",
-        "id": 9,
-    -   "name": "Copy of Addition",
-    +   "name": "Copy of My Addition Question",
-        "options": Array [],
-        "points": 1,
-        "published": false,
-        "type": "short_answer_question",
-      }
-
-      207 |     // duplicateQuestion
-      208 |     test("Testing the duplicateQuestion function", () => {
-    > 209 |         expect(duplicateQuestion(9, ADDITION_QUESTION)).toEqual({
-          |                                                         ^
-      210 |             id: 9,
-      211 |             name: "Copy of Addition",
-      212 |             body: "What is 2+2?",
-
-      at Object.<anonymous> (src/objects.test.ts:209:57)
-
-  ● Testing the object functions › Testing the addOption function
-
-    expect(received).toEqual(expected) // deep equality
-
-    - Expected  - 1
-    + Received  + 1
-
-    @@ -1,10 +1,10 @@
-      Object {
-        "body": "What shape can you make with one line?",
-        "expected": "circle",
-        "id": 9,
-    -   "name": "Shapes",
-    +   "name": "I COMPLETELY CHANGED THIS NAME",
-        "options": Array [
-          "square",
-          "triangle",
-          "circle",
-          "heptagon",
-
-      232 |     // addOption
-      233 |     test("Testing the addOption function", () => {
-    > 234 |         expect(addOption(SHAPE_QUESTION, "heptagon")).toEqual({
-          |                                                       ^
-      235 |             id: 9,
-      236 |             name: "Shapes",
-      237 |             body: "What shape can you make with one line?",
-
-      at Object.<anonymous> (src/objects.test.ts:234:55)
-
+PASS src/objects.test.ts
 FAIL src/arrays.test.ts
   ● Testing the array functions › Testing the injectPositive function
 
     expect(received).toEqual(expected) // deep equality
 
     - Expected  - 1
-    + Received  + 0
+    + Received  + 1
 
       Array [
         100,
         199,
         1,
-    -   -5,
-        300,
+        -5,
+    -   300,
+    +   100,
         7,
         3,
       ]
@@ -128,25 +41,28 @@ FAIL src/arrays.test.ts
 
       at Object.<anonymous> (src/arrays.test.ts:269:43)
 
+PASS src/nested.test.ts
 PASS src/functions.test.ts
-PASS src/HtmlCss.test.tsx
 PASS src/text.test.tsx
 PASS src/App.test.tsx
+PASS src/HtmlCss.test.tsx
 ----------------|---------|----------|---------|---------|-------------------
 File            | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ----------------|---------|----------|---------|---------|-------------------
-All files       |     100 |    96.15 |     100 |     100 |                   
- src            |     100 |    96.15 |     100 |     100 |                   
+All files       |     100 |    98.05 |     100 |     100 |                   
+ src            |     100 |    98.05 |     100 |     100 |                   
   App.tsx       |     100 |      100 |     100 |     100 |                   
-  arrays.ts     |     100 |    96.66 |     100 |     100 | 144               
+  arrays.ts     |     100 |    96.42 |     100 |     100 | 133               
   functions.ts  |     100 |      100 |     100 |     100 |                   
+  nested.ts     |     100 |      100 |     100 |     100 |                   
   objects.ts    |     100 |    91.66 |     100 |     100 | 75                
  src/interfaces |       0 |        0 |       0 |       0 |                   
+  answer.ts     |       0 |        0 |       0 |       0 |                   
   question.ts   |       0 |        0 |       0 |       0 |                   
 ----------------|---------|----------|---------|---------|-------------------
 
-Test Suites: 2 failed, 4 passed, 6 total
-Tests:       4 failed, 29 passed, 33 total
+Test Suites: 1 failed, 6 passed, 7 total
+Tests:       1 failed, 48 passed, 49 total
 Snapshots:   0 total
-Time:        3.748 s
+Time:        3.971 s
 Ran all test suites.
