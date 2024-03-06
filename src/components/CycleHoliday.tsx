@@ -23,8 +23,8 @@ export function CycleHoliday(): JSX.Element {
     return (
         <div>
             <p>Holiday: {holidays[currentHolidayIndex].emoji}</p>
-            <button onClick={advanceByAlphabet}>Advance by Alphabet</button>
-            <button onClick={advanceByYear}>Advance by Year</button>
+            <Button onClick={advanceByAlphabet}>Advance by Alphabet</Button>
+            <Button onClick={advanceByYear}>Advance by Year</Button>
         </div>
     );
 }
