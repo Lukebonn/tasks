@@ -32,6 +32,7 @@ export function StartAttempt(): JSX.Element {
             >
                 Mulligan
             </Button>
+            {attempts}
         </span>
     );
 }
