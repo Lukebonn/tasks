@@ -25,7 +25,7 @@ function App(): JSX.Element {
                 UD CISC275 with Hello World by Luke Bonniwell
             </header>
             <hr></hr>
-            {/* <DoubleHalf></DoubleHalf> */}
+            <DoubleHalf></DoubleHalf>
             <hr></hr>
             <ChooseTeam></ChooseTeam>
             <hr></hr>
